@@ -14,7 +14,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     env:
-      ghcr_image_name: ghcr.io/migruiz4/charts-syncer
+      dockerhub_image_name: docker.io/miruiz145/charts-syncer
+      ghcr_image_name: ghcr.io/bitnami/charts-syncer
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -72,6 +73,7 @@ jobs:
         uses: docker/metadata-action@v5.8.0
         with:
           images: |
+            ${{ env.dockerhub_image_name }}
             ${{ env.ghcr_image_name }}
           # Image tags: 'latest', '2' and the tagged version without the 'v' prefix
           tags: |
